@@ -1,10 +1,11 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import TopBar from "./components/TopBar";
+import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      Omnifocus mockup
+    <div>
+      <TopBar />
     </div>
   );
 }
