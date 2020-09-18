@@ -22352,6 +22352,10 @@ video {
           animation: bounce 1s infinite;
 }
 
+.project-blue {
+  color: "#3DADFD";
+}
+
 @media (min-width: 640px) {
   .sm\:space-y-0 > :not(template) ~ :not(template) {
     --space-y-reverse: 0;
