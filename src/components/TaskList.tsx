@@ -4,7 +4,7 @@ import projects from "../data/projects.json";
 import tags from "../data/tags.json";
 import tasks from "../data/tasks.json";
 
-function getTagsFromIds<K extends keyof ITag>(
+export function getTagsFromIds<K extends keyof ITag>(
   projectTagsArr: K[],
   tags: ITag
 ): string[] {
@@ -37,39 +37,7 @@ function TaskList() {
               )
               .map((task) => {
                 const taskTags = getTagsFromIds(task.tags, tags);
-                return (
-                  <>
-                    <TaskItem key={task.id} taskTags={taskTags} {...task} />
-                    {Object.values(tasks)
-                      .filter((nestedTask) => nestedTask.parent === task.id)
-                      .map((nested) => (
-                        <>
-                          <TaskItem
-                            key={nested.id}
-                            taskTags={taskTags}
-                            nestlevel="pl-6"
-                            selected={true}
-                            {...nested}
-                          />
-                          {Object.values(tasks)
-                            .filter(
-                              (nested2Task) => nested2Task.parent === nested.id
-                            )
-                            .map((nested2) => (
-                              <>
-                                <TaskItem
-                                  key={nested2.id}
-                                  taskTags={taskTags}
-                                  nestlevel="pl-12"
-                                  selected={false}
-                                  {...nested2}
-                                />
-                              </>
-                            ))}
-                        </>
-                      ))}
-                  </>
-                );
+                return <TaskItem key={task.id} taskTags={taskTags} {...task} />;
               })}
           </div>
         );

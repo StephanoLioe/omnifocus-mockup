@@ -25,12 +25,23 @@
     "id": "1ccc",
     "projectId": "1AAA",
     "tags": ["taaa", "tbbb"],
-    "title": "Taak 2",
+    "title": "Taak 3 van project 1",
     "completed": true,
     "note": "Dit is een notitie van taak 3",
     "flag": false,
     "exp-date": "30-09-2020",
     "parent": "1bbb"
+  },
+  "1eee": {
+    "id": "1eee",
+    "projectId": "1AAA",
+    "tags": ["taaa", "tbbb"],
+    "title": "Taak Nested 3 van project 1",
+    "completed": true,
+    "note": "Dit is een notitie van taak 3",
+    "flag": false,
+    "exp-date": "30-09-2020",
+    "parent": "1ccc"
   },
   "1ddd": {
     "id": "1ddd",
