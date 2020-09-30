@@ -17,6 +17,24 @@ interface ITaskVal {
   parent: string;
 }
 
-interface IProject {
+interface ITaskJsonVal {
+  id: string;
+  projectId: string;
+  title: string;
+  completed: boolean;
+  tags: string[];
+  note: string;
+  flag: boolean;
+  parent: string;
+}
+
+interface ITask {
   [key: string]: ITaskVal;
+}
+
+interface IProjectVal {
+  id: string;
+  title: string;
+  exdate: string;
+  tags: string[];
 }

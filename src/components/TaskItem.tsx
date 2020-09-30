@@ -5,6 +5,7 @@ import Flag from "./Flag";
 import Note from "./Note";
 
 import tasks from "../data/tasks.json";
+import { useProjectDispatch } from "../context/projectProvider";
 
 interface IProps extends ITaskVal {
   selected?: boolean;
@@ -22,6 +23,7 @@ function TaskItem({
   nestlevel = 0,
 }: IProps) {
   const childTasks = Object.values(tasks).filter((task) => task.parent === id);
+  const dispatch = useProjectDispatch();
 
   return (
     <>
@@ -30,7 +32,10 @@ function TaskItem({
           selected ? " bg-blue-100  border-blue-400" : " border-transparent"
         }`}
       >
-        <div style={{ paddingLeft: nestlevel * 24 }}>
+        <div
+          style={{ paddingLeft: nestlevel * 24 }}
+          onClick={() => dispatch({ type: "toggle-complete" })}
+        >
           <Checkbox completed={completed} />
         </div>
         <div className="flex flex-col pl-2 flex-grow">

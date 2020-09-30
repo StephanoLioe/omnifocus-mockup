@@ -1,8 +1,10 @@
 import React from "react";
 import TaskItem from "./TaskItem";
-import projects from "../data/projects.json";
-import tags from "../data/tags.json";
+// import projects from "../data/projects.json";
+// import tags from "../data/tags.json";
 import tasks from "../data/tasks.json";
+
+import { useProjectState } from "../context/projectProvider";
 
 export function getTagsFromIds<K extends keyof ITag>(
   projectTagsArr: K[],
@@ -12,6 +14,8 @@ export function getTagsFromIds<K extends keyof ITag>(
 }
 
 function TaskList() {
+  const { projects, tags } = useProjectState();
+
   return (
     <div className="">
       {Object.values(projects).map((project) => {

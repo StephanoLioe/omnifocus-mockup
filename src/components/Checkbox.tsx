@@ -20,10 +20,12 @@ function CompletedCheckBox() {
 function Checkbox({ completed }: { completed: boolean }) {
   const [complete, setComplete] = useState(completed);
 
-  const toggleComplete = () => setComplete((c: boolean) => !c);
+  const toggleComplete = () => {
+    setComplete((c: boolean) => !c);
+  };
 
   return (
-    <div onClick={toggleComplete} className="cursor-pointer">
+    <div onClick={() => toggleComplete()} className="cursor-pointer">
       {complete ? <UncompletedCheckbox /> : <CompletedCheckBox />}
     </div>
   );
