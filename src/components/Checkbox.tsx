@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 
-function UncompletedCheckbox() {
+const UncompletedCheckbox: React.FC = () => {
   return (
     <div className="h-4 w-4 border-2 box-border border-red-500 rounded-full"></div>
   );
-}
+};
 
-function CompletedCheckBox() {
+const CompletedCheckBox: React.FC = () => {
   return (
     <div className="h-4 w-4 box-border bg-gray-400 rounded-full relative overflow-hidden">
       <div
@@ -15,9 +15,9 @@ function CompletedCheckBox() {
       ></div>
     </div>
   );
-}
+};
 
-function Checkbox({ completed }: { completed: boolean }) {
+const Checkbox: React.FC<{ completed: boolean }> = ({ completed }) => {
   const [complete, setComplete] = useState(completed);
 
   const toggleComplete = () => {
@@ -29,6 +29,6 @@ function Checkbox({ completed }: { completed: boolean }) {
       {complete ? <UncompletedCheckbox /> : <CompletedCheckBox />}
     </div>
   );
-}
+};
 
 export default Checkbox;

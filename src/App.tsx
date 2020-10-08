@@ -7,7 +7,7 @@ import Provider from "./context/projectProvider";
 
 import "./App.css";
 
-function App() {
+const App: React.FC = () => {
   return (
     <Provider>
       <Router>
@@ -21,6 +21,6 @@ function App() {
       </Router>
     </Provider>
   );
-}
+};
 
 export default App;

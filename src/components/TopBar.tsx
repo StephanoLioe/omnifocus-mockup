@@ -7,7 +7,7 @@ import eye from "../img/png/eye.png";
 import lightBulb from "../img/png/light-bulb.png";
 import search from "../img/png/search.png";
 
-export default function TopBar() {
+const TopBar: React.FC = () => {
   return (
     <div className="bg-gray-200 flex justify-between items-center py-1">
       <div className="ml-10 flex items-center">
@@ -29,14 +29,14 @@ export default function TopBar() {
       </div>
     </div>
   );
-}
+};
 
 interface IProp {
   icon: string;
   clickEvent: () => void;
 }
 
-function TopBarBtn({ icon, clickEvent }: IProp) {
+const TopBarBtn: React.FC<IProp> = ({ icon, clickEvent }) => {
   return (
     <button
       className="bg-gray-100 w-10 px-2 ml-1 rounded border border-gray-700 focus:outline-none"
@@ -45,4 +45,6 @@ function TopBarBtn({ icon, clickEvent }: IProp) {
       <img src={icon} alt="inbox" className="h-5 border-none" />
     </button>
   );
-}
+};
+
+export default TopBar;

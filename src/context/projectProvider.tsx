@@ -28,7 +28,7 @@ function projectReducer(state: State, action: Action) {
   }
 }
 
-function ProjectProvider({ children }: { children: React.ReactNode }) {
+const ProjectProvider: React.FC = ({ children }) => {
   const [state, dispatch] = useReducer(projectReducer, {
     projects: projects,
     tasks: tasks,
@@ -41,7 +41,7 @@ function ProjectProvider({ children }: { children: React.ReactNode }) {
       </ProjectDispatchContext.Provider>
     </ProjectStateContext.Provider>
   );
-}
+};
 
 function useProjectState() {
   const context = useContext(ProjectStateContext);

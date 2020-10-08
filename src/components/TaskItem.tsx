@@ -12,7 +12,7 @@ interface IProps extends ITaskVal {
   nestlevel?: number;
 }
 
-function TaskItem({
+const TaskItem: React.FC<IProps> = ({
   id,
   title,
   note,
@@ -21,7 +21,7 @@ function TaskItem({
   flag,
   selected = false,
   nestlevel = 0,
-}: IProps) {
+}) => {
   const childTasks = Object.values(tasks).filter((task) => task.parent === id);
   const dispatch = useProjectDispatch();
 
@@ -95,6 +95,6 @@ function TaskItem({
         ))}
     </>
   );
-}
+};
 
 export default TaskItem;

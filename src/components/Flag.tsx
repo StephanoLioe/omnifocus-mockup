@@ -1,14 +1,12 @@
 import React from "react";
 
-function Flag({
-  active = false,
-  className,
-  onClick,
-}: {
+interface IProps {
   active: boolean;
   className: string;
   onClick: () => void;
-}) {
+}
+
+const Flag: React.FC<IProps> = ({ active = false, className, onClick }) => {
   return (
     <div className={className} onClick={onClick}>
       <svg
@@ -33,6 +31,6 @@ function Flag({
       </svg>
     </div>
   );
-}
+};
 
 export default Flag;

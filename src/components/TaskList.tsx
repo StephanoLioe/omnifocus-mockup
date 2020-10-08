@@ -13,7 +13,7 @@ export function getTagsFromIds<K extends keyof ITag>(
   return projectTagsArr.map((k: K): any => tags[k].tagname);
 }
 
-function TaskList() {
+const TaskList: React.FC = () => {
   const { projects, tags } = useProjectState();
 
   return (
@@ -48,6 +48,6 @@ function TaskList() {
       })}
     </div>
   );
-}
+};
 
 export default TaskList;
