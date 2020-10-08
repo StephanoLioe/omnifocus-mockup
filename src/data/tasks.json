@@ -8,7 +8,8 @@
     "note": "Dit is een notitie",
     "flag": false,
     "exp-date": "27-09-2020",
-    "parent": "top"
+    "parent": "top",
+    "orderdChildren": ["1ccc"]
   },
   "1bbb": {
     "id": "1bbb",
@@ -19,7 +20,8 @@
     "note": "Dit is een notitie van taak 2. Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure",
     "flag": false,
     "exp-date": "30-09-2020",
-    "parent": "1aaa"
+    "parent": "1aaa",
+    "orderdChildren": []
   },
   "1ccc": {
     "id": "1ccc",
@@ -30,7 +32,8 @@
     "note": "Dit is een notitie van taak 3",
     "flag": false,
     "exp-date": "30-09-2020",
-    "parent": "1bbb"
+    "parent": "1bbb",
+    "orderdChildren": ["1eee", "1ggg"]
   },
   "1eee": {
     "id": "1eee",
@@ -41,7 +44,20 @@
     "note": "Dit is een notitie van taak 3",
     "flag": false,
     "exp-date": "30-09-2020",
-    "parent": "1ccc"
+    "parent": "1ccc",
+    "orderdChildren": []
+  },
+  "1ggg": {
+    "id": "1ggg",
+    "projectId": "1AAA",
+    "tags": ["taaa", "tbbb"],
+    "title": "Taak Nested 3 van project 1 maar op volgorde",
+    "completed": true,
+    "note": "Dit is een andere notitie van taak 3",
+    "flag": false,
+    "exp-date": "30-09-2020",
+    "parent": "1ccc" ,
+    "orderdChildren": []
   },
   "1ddd": {
     "id": "1ddd",
@@ -52,6 +68,7 @@
     "note": "Dit is een notitie van taak 3",
     "flag": false,
     "exp-date": "30-09-2020",
-    "parent": "top"
+    "parent": "top",
+    "orderdChildren": [] 
   }
 }

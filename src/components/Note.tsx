@@ -1,14 +1,12 @@
 import React from "react";
 
-function Note({
-  active = false,
-  className,
-  onClick,
-}: {
+interface IProps {
   active: boolean;
   className: string;
   onClick: () => void;
-}) {
+}
+
+const Note: React.FC<IProps> = ({ active = false, className, onClick }) => {
   return (
     <div className={className} onClick={onClick}>
       <svg
@@ -32,6 +30,6 @@ function Note({
       </svg>
     </div>
   );
-}
+};
 
 export default Note;

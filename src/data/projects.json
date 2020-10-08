@@ -3,12 +3,16 @@
     "id": "1AAA",
     "title": "Huis schoonmaken",
     "exdate": "234t",
-    "tags": ["taaa", "tbbb"]
+    "tags": ["taaa", "tbbb"],
+    "completed": false,
+    "tasksOrder": ["1aaa"]
   },
   "1BBB": {
     "id": "1BBB",
     "title": "Mercedes kopen",
     "exdate": "234t",
-    "tags": ["taaa", "tbbb"]
+    "tags": ["taaa", "tbbb"],
+    "completed": false,
+    "tasksOrder": ["1ddd"]
   }
 }

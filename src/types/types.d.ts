@@ -15,6 +15,8 @@ interface ITaskVal {
   flag: boolean;
   completed: boolean;
   parent: string;
+  orderdChildren: string[]
+  projectId: string
 }
 
 interface ITaskJsonVal {
@@ -26,10 +28,12 @@ interface ITaskJsonVal {
   note: string;
   flag: boolean;
   parent: string;
+  orderdChildren: string[];
+  projectId: string
 }
 
 interface ITask {
-  [key: string]: ITaskVal;
+  [key: string]: ITaskJsonVal;
 }
 
 interface IProjectVal {
@@ -37,4 +41,9 @@ interface IProjectVal {
   title: string;
   exdate: string;
   tags: string[];
+  tasksOrder: string[]
+}
+
+interface IProject {
+  [key: string]: IProjectVal
 }

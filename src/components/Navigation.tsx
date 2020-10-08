@@ -7,7 +7,7 @@ import projectImg from "../img/svg/projects.svg";
 import chartImg from "../img/svg/chart.svg";
 import cupImg from "../img/svg/cup.svg";
 
-export default function Navigation() {
+const Navigation: React.FC = () => {
   return (
     <div className="nav w-16 h-full flex-col bg-gray-900">
       <Nav
@@ -33,7 +33,7 @@ export default function Navigation() {
       />
     </div>
   );
-}
+};
 
 interface INavLink {
   to: string;
@@ -42,7 +42,7 @@ interface INavLink {
   color?: string;
 }
 
-function Nav({ to, title, icon, color }: INavLink) {
+const Nav: React.FC<INavLink> = ({ to, title, icon, color }) => {
   return (
     <NavLink
       to={to}
@@ -55,4 +55,6 @@ function Nav({ to, title, icon, color }: INavLink) {
       <div className="text-xs text-white text-center">{title}</div>
     </NavLink>
   );
-}
+};
+
+export default Navigation;

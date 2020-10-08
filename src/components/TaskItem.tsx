@@ -4,15 +4,15 @@ import Checkbox from "./Checkbox";
 import Flag from "./Flag";
 import Note from "./Note";
 
-import tasks from "../data/tasks.json";
 import { useProjectDispatch } from "../context/projectProvider";
 
 interface IProps extends ITaskVal {
   selected?: boolean;
   nestlevel?: number;
+  tasks: ITask;
 }
 
-function TaskItem({
+const TaskItem: React.FC<IProps> = ({
   id,
   title,
   note,
@@ -21,8 +21,10 @@ function TaskItem({
   flag,
   selected = false,
   nestlevel = 0,
-}: IProps) {
-  const childTasks = Object.values(tasks).filter((task) => task.parent === id);
+  orderdChildren = [],
+  tasks,
+}) => {
+  const childTasks = Object.values(tasks);
   const dispatch = useProjectDispatch();
 
   return (
@@ -90,11 +92,12 @@ function TaskItem({
             taskTags={taskTags}
             nestlevel={nestlevel + 1}
             selected={false}
+            tasks={tasks}
             {...nested}
           />
         ))}
     </>
   );
-}
+};
 
 export default TaskItem;

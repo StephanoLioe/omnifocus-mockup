@@ -1,7 +1,7 @@
 import React from "react";
 import TaskList from "./TaskList";
 
-export default function Main() {
+const Main: React.FC = () => {
   return (
     <div className="main flex flex-grow">
       <div className="w-56 bg-gray-800 text-white">list</div>
@@ -18,4 +18,6 @@ export default function Main() {
       </main>
     </div>
   );
-}
+};
+
+export default Main;
