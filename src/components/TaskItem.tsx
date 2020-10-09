@@ -4,12 +4,12 @@ import Checkbox from "./Checkbox";
 import Flag from "./Flag";
 import Note from "./Note";
 
-import tasks from "../data/tasks.json";
 import { useProjectDispatch } from "../context/projectProvider";
 
 interface IProps extends ITaskVal {
   selected?: boolean;
   nestlevel?: number;
+  tasks: ITask;
 }
 
 const TaskItem: React.FC<IProps> = ({
@@ -21,8 +21,10 @@ const TaskItem: React.FC<IProps> = ({
   flag,
   selected = false,
   nestlevel = 0,
+  orderdChildren = [],
+  tasks,
 }) => {
-  const childTasks = Object.values(tasks).filter((task) => task.parent === id);
+  const childTasks = Object.values(tasks);
   const dispatch = useProjectDispatch();
 
   return (
@@ -90,6 +92,7 @@ const TaskItem: React.FC<IProps> = ({
             taskTags={taskTags}
             nestlevel={nestlevel + 1}
             selected={false}
+            tasks={tasks}
             {...nested}
           />
         ))}

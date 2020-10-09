@@ -3,6 +3,7 @@ import React, { createContext, useContext, useReducer } from "react";
 import projects from "../data/projects.json";
 import tags from "../data/tags.json";
 import tasks from "../data/tasks.json";
+import projectOrder from "../data/projectorder.json";
 
 type Action = { type: "toggle-complete" } | { type: "toggle-flag" };
 export type Dispatch = (action: Action) => void;
@@ -10,6 +11,7 @@ type State = {
   projects: Record<string, IProjectVal>;
   tasks: Record<string, ITaskJsonVal>;
   tags: Record<string, ITagVal>;
+  projectOrder: string[];
 };
 
 const ProjectStateContext = createContext<State | undefined>(undefined);
@@ -33,6 +35,7 @@ const ProjectProvider: React.FC = ({ children }) => {
     projects: projects,
     tasks: tasks,
     tags: tags,
+    projectOrder: projectOrder,
   });
   return (
     <ProjectStateContext.Provider value={state}>

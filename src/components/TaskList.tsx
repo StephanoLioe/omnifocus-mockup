@@ -1,22 +1,16 @@
 import React from "react";
 import TaskItem from "./TaskItem";
-import tasks from "../data/tasks.json";
-
+import { getProjectsFromIds, getTagsFromIds } from "../utils/projectUtils";
 import { useProjectState } from "../context/projectProvider";
 
-export function getTagsFromIds<K extends keyof ITag>(
-  projectTagsArr: K[],
-  tags: ITag
-): string[] {
-  return projectTagsArr.map((k: K): any => tags[k].tagname);
-}
-
 const TaskList: React.FC = () => {
-  const { projects, tags } = useProjectState();
+  const { projects, tags, projectOrder, tasks } = useProjectState();
+
+  const data = getProjectsFromIds(projectOrder, projects, tasks);
 
   return (
     <div className="">
-      {Object.values(projects).map((project) => {
+      {data.map((project) => {
         return (
           <div key={project.id}>
             <div className="pl-20">
@@ -33,14 +27,17 @@ const TaskList: React.FC = () => {
                 </span>
               </div>
             </div>
-            {Object.values(tasks)
-              .filter(
-                (task) => task.projectId === project.id && task.parent === "top"
-              )
-              .map((task) => {
-                const taskTags = getTagsFromIds(task.tags, tags);
-                return <TaskItem key={task.id} taskTags={taskTags} {...task} />;
-              })}
+            {project.tasks.map((task: ITaskJsonVal) => {
+              const taskTags = getTagsFromIds(task.tags, tags);
+              return (
+                <TaskItem
+                  key={task.id}
+                  taskTags={taskTags}
+                  tasks={tasks}
+                  {...task}
+                />
+              );
+            })}
           </div>
         );
       })}
