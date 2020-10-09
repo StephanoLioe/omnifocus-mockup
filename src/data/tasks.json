@@ -1,4 +1,30 @@
 {
+  "1AAA": {
+    "id": "1AAA",
+    "projectId": "1AAA",
+    "tags": ["taaa", "tbbb"],
+    "title": "Data structure maken voor applicatie",
+    "completed": false,
+    "note": "Dit is een notitie",
+    "flag": false,
+    "exp-date": "27-09-2020",
+    "parent": "projects",
+    "childrenIds": ["1aaa"]
+  },
+  "1BBB": {
+    "id": "1BBB",
+    "title": "Mercedes kopen",
+    "exdate": "234t",
+    "tasksOrder": ["1ddd"],
+    "projectId": "1AAA",
+    "tags": ["taaa", "tbbb"],
+    "completed": false,
+    "note": "Dit is een notitie",
+    "flag": false,
+    "exp-date": "27-09-2020",
+    "parent": "projects",
+    "childrenIds": ["1ddd"]
+  },
   "1aaa": {
     "id": "1aaa",
     "projectId": "1AAA",
@@ -9,7 +35,7 @@
     "flag": false,
     "exp-date": "27-09-2020",
     "parent": "top",
-    "orderdChildren": ["1ccc"]
+    "childrenIds": ["1ccc"]
   },
   "1bbb": {
     "id": "1bbb",
@@ -21,7 +47,7 @@
     "flag": false,
     "exp-date": "30-09-2020",
     "parent": "1aaa",
-    "orderdChildren": []
+    "childrenIds": []
   },
   "1ccc": {
     "id": "1ccc",
@@ -33,7 +59,7 @@
     "flag": false,
     "exp-date": "30-09-2020",
     "parent": "1bbb",
-    "orderdChildren": ["1eee", "1ggg"]
+    "childrenIds": ["1eee", "1ggg"]
   },
   "1eee": {
     "id": "1eee",
@@ -45,7 +71,7 @@
     "flag": false,
     "exp-date": "30-09-2020",
     "parent": "1ccc",
-    "orderdChildren": []
+    "childrenIds": []
   },
   "1ggg": {
     "id": "1ggg",
@@ -57,7 +83,7 @@
     "flag": false,
     "exp-date": "30-09-2020",
     "parent": "1ccc" ,
-    "orderdChildren": []
+    "childrenIds": []
   },
   "1ddd": {
     "id": "1ddd",
@@ -69,6 +95,6 @@
     "flag": false,
     "exp-date": "30-09-2020",
     "parent": "top",
-    "orderdChildren": [] 
+    "childrenIds": [] 
   }
 }

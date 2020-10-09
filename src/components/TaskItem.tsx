@@ -1,31 +1,27 @@
 import React from "react";
 import Checkbox from "./Checkbox";
+import { getTagsFromIds } from "../utils/projectUtils";
 
 import Flag from "./Flag";
 import Note from "./Note";
+import {
+  useProjectState,
+  useProjectDispatch,
+} from "../context/projectProvider";
 
-import { useProjectDispatch } from "../context/projectProvider";
-
-interface IProps extends ITaskVal {
-  selected?: boolean;
+interface IProps {
+  id: string;
   nestlevel?: number;
-  tasks: ITask;
 }
 
-const TaskItem: React.FC<IProps> = ({
-  id,
-  title,
-  note,
-  completed,
-  taskTags = [],
-  flag,
-  selected = false,
-  nestlevel = 0,
-  orderdChildren = [],
-  tasks,
-}) => {
-  const childTasks = Object.values(tasks);
+const TaskItem: React.FC<IProps> = ({ id, nestlevel = 0 }) => {
+  const { tags, tasks } = useProjectState();
+  const { completed, title, note, tags: tagIds } = tasks[id];
+
   const dispatch = useProjectDispatch();
+
+  const selected = false;
+  const taskTags = getTagsFromIds(tagIds, tags);
 
   return (
     <>
@@ -36,7 +32,7 @@ const TaskItem: React.FC<IProps> = ({
       >
         <div
           style={{ paddingLeft: nestlevel * 24 }}
-          onClick={() => dispatch({ type: "toggle-complete" })}
+          onClick={() => dispatch({ type: "toggle-complete", payload: { id } })}
         >
           <Checkbox completed={completed} />
         </div>
@@ -84,17 +80,9 @@ const TaskItem: React.FC<IProps> = ({
         </div>
       </div>
       {/* recursion to render child tasks */}
-      {childTasks
-        .filter((nestedTask) => nestedTask.parent === id)
-        .map((nested) => (
-          <TaskItem
-            key={nested.id}
-            taskTags={taskTags}
-            nestlevel={nestlevel + 1}
-            selected={false}
-            tasks={tasks}
-            {...nested}
-          />
+      {tasks[id].childrenIds.length > 0 &&
+        tasks[id].childrenIds.map((childId) => (
+          <TaskItem key={childId} id={childId} nestlevel={nestlevel + 1} />
         ))}
     </>
   );

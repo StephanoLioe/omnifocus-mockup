@@ -15,7 +15,7 @@ interface ITaskVal {
   flag: boolean;
   completed: boolean;
   parent: string;
-  orderdChildren: string[]
+  childrenIds: string[]
   projectId: string
 }
 
@@ -28,7 +28,7 @@ interface ITaskJsonVal {
   note: string;
   flag: boolean;
   parent: string;
-  orderdChildren: string[];
+  childrenIds: string[];
   projectId: string
 }
 

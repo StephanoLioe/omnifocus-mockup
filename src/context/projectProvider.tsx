@@ -1,14 +1,14 @@
 import React, { createContext, useContext, useReducer } from "react";
 
-import projects from "../data/projects.json";
 import tags from "../data/tags.json";
 import tasks from "../data/tasks.json";
 import projectOrder from "../data/projectorder.json";
 
-type Action = { type: "toggle-complete" } | { type: "toggle-flag" };
+type Action =
+  | { type: "toggle-complete"; payload: { id: string } }
+  | { type: "toggle-flag" };
 export type Dispatch = (action: Action) => void;
 type State = {
-  projects: Record<string, IProjectVal>;
   tasks: Record<string, ITaskJsonVal>;
   tags: Record<string, ITagVal>;
   projectOrder: string[];
@@ -20,8 +20,18 @@ const ProjectDispatchContext = createContext<Dispatch | undefined>(undefined);
 function projectReducer(state: State, action: Action) {
   switch (action.type) {
     case "toggle-complete":
-      console.log("toggle-complete called", state);
-      return { ...state };
+      console.log("toggle-complete called", action.payload);
+
+      return {
+        ...state,
+        tasks: {
+          ...state.tasks,
+          [action.payload.id]: {
+            ...state.tasks[action.payload.id],
+            completed: !state.tasks[action.payload.id].completed,
+          },
+        },
+      };
     case "toggle-flag":
       console.log("toggle-flag called", state);
       return { ...state };
@@ -30,9 +40,8 @@ function projectReducer(state: State, action: Action) {
   }
 }
 
-const ProjectProvider: React.FC = ({ children }) => {
+const ProjectProvider = ({ children }: { children: React.ReactNode }) => {
   const [state, dispatch] = useReducer(projectReducer, {
-    projects: projects,
     tasks: tasks,
     tags: tags,
     projectOrder: projectOrder,

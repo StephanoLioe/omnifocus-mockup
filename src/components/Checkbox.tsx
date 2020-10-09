@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 const UncompletedCheckbox: React.FC = () => {
   return (
@@ -17,16 +17,10 @@ const CompletedCheckBox: React.FC = () => {
   );
 };
 
-const Checkbox: React.FC<{ completed: boolean }> = ({ completed }) => {
-  const [complete, setComplete] = useState(completed);
-
-  const toggleComplete = () => {
-    setComplete((c: boolean) => !c);
-  };
-
+const Checkbox: React.FC<{ completed: boolean }> = ({ completed = false }) => {
   return (
-    <div onClick={() => toggleComplete()} className="cursor-pointer">
-      {complete ? <UncompletedCheckbox /> : <CompletedCheckBox />}
+    <div className="cursor-pointer">
+      {completed ? <UncompletedCheckbox /> : <CompletedCheckBox />}
     </div>
   );
 };

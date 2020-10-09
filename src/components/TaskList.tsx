@@ -1,21 +1,18 @@
 import React from "react";
 import TaskItem from "./TaskItem";
-import { getProjectsFromIds, getTagsFromIds } from "../utils/projectUtils";
 import { useProjectState } from "../context/projectProvider";
 
 const TaskList: React.FC = () => {
-  const { projects, tags, projectOrder, tasks } = useProjectState();
-
-  const data = getProjectsFromIds(projectOrder, projects, tasks);
+  const { tasks, projectOrder } = useProjectState();
 
   return (
     <div className="">
-      {data.map((project) => {
+      {projectOrder.map((id: string) => {
         return (
-          <div key={project.id}>
+          <div key={id}>
             <div className="pl-20">
               <h2 className="text-lg font-bold leading-none">
-                {project.title}
+                {tasks[id].title}
               </h2>
               <div className="pb-2 leading-none border-b">
                 <span className="task-info text-xs text-gray-600 font-semibold">
@@ -27,16 +24,8 @@ const TaskList: React.FC = () => {
                 </span>
               </div>
             </div>
-            {project.tasks.map((task: ITaskJsonVal) => {
-              const taskTags = getTagsFromIds(task.tags, tags);
-              return (
-                <TaskItem
-                  key={task.id}
-                  taskTags={taskTags}
-                  tasks={tasks}
-                  {...task}
-                />
-              );
+            {tasks[id].childrenIds.map((taskId: string) => {
+              return <TaskItem key={taskId} id={taskId} />;
             })}
           </div>
         );
